@@ -25,7 +25,11 @@
 						"referenceName": "synapse_nycpayrollsummary",
 						"type": "DatasetReference"
 					},
-					"name": "sinknycpayrollsummary"
+					"name": "sinknycpayrollsummary",
+					"rejectedDataLinkedService": {
+						"referenceName": "ls_adls_nycpayroll",
+						"type": "LinkedServiceReference"
+					}
 				}
 			],
 			"transformations": [
@@ -44,7 +48,7 @@
 			],
 			"scriptLines": [
 				"parameters{",
-				"     dataflow_param_fiscalyear as integer (2016)",
+				"     dataflow_param_fiscalyear as integer (2021)",
 				"}",
 				"source(output(",
 				"          FiscalYear as integer,",
@@ -99,8 +103,8 @@
 				"srcnycpayroll2021, srcnycpayroll2020 union(byName: true)~> union1",
 				"union1 filter(toInteger(FiscalYear) >= $dataflow_param_fiscalyear) ~> filterfiscalyear",
 				"filterfiscalyear derive(TotalPaid = RegularGrossPaid+TotalOTPaid+TotalOtherPay) ~> derivedColumn",
-				"derivedColumn aggregate(groupBy(AgencyName,",
-				"          FiscalYear),",
+				"derivedColumn aggregate(groupBy(FiscalYear,",
+				"          AgencyName),",
 				"     TotalPaid = sum(TotalPaid)) ~> agg",
 				"agg sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -121,8 +125,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          FiscalYear,",
 				"          AgencyName,",
+				"          FiscalYear,",
 				"          TotalPaid",
 				"     )) ~> sinknycpayrollsummary"
 			]
