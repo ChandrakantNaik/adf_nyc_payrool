@@ -19,6 +19,9 @@
 						"referenceName": "df_loadpayroll2021",
 						"type": "DataFlowReference"
 					},
+					"staging": {
+						"folderPath": ""
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
