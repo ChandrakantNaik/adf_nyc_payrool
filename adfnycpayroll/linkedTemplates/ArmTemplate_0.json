@@ -1066,13 +1066,13 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pl_empmaster')]",
+			"name": "[concat(parameters('factoryName'), '/pl_agencymaster')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "df_loadempmaster",
+						"name": "df_loadagencymaster",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
@@ -1085,12 +1085,12 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "df_loadempmaster",
+								"referenceName": "df_loadagencymaster",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"srcempmaster": {},
-									"sinkempmaster": {}
+									"srcagencymaster": {},
+									"sinkagencymaster": {}
 								}
 							},
 							"staging": {
@@ -1115,7 +1115,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/df_loadempmaster')]",
+				"[concat(variables('factoryId'), '/dataflows/df_loadagencymaster')]",
 				"[concat(variables('factoryId'), '/linkedServices/ls_adls_nycpayroll')]"
 			]
 		}
