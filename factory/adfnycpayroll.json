@@ -1,0 +1,9 @@
+{
+	"name": "adfnycpayroll",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "51ea25b0-c3b8-47d6-a02a-b7c622086526",
+		"tenantId": "d204d279-b75a-4bef-9a09-b03c30f2f58d"
+	}
+}
