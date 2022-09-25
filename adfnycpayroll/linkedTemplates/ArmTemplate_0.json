@@ -1066,13 +1066,13 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pl_payroll2021')]",
+			"name": "[concat(parameters('factoryName'), '/pl_empmaster')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "df_loadpayroll2021",
+						"name": "df_loadempmaster",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [],
 						"policy": {
@@ -1085,15 +1085,21 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "df_loadpayroll2021",
+								"referenceName": "df_loadempmaster",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"srcnycpayroll2021": {},
-									"sinknycpayroll2021": {}
+									"srcempmaster": {},
+									"sinkempmaster": {}
 								}
 							},
-							"staging": {},
+							"staging": {
+								"linkedService": {
+									"referenceName": "ls_adls_nycpayroll",
+									"type": "LinkedServiceReference"
+								},
+								"folderPath": "adlsnycpayrollchandrakantn/dirstaging"
+							},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1109,7 +1115,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/df_loadpayroll2021')]"
+				"[concat(variables('factoryId'), '/dataflows/df_loadempmaster')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_adls_nycpayroll')]"
 			]
 		}
 	]
