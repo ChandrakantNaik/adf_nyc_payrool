@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfnycpayroll"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"ls_adls_adf_nycpayroll_accountKey": {
+			"value": ""
+		},
+		"ls_adls_nycpayroll_accountKey": {
+			"value": ""
+		},
+		"ls_sqldb_nypayroll_connectionString": {
+			"value": ""
+		},
+		"ls_synapsesqlpool_nycpayroll_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://adlsnycpayroll.dfs.core.windows.net/"
+		},
+		"ls_adls_adf_nycpayroll_properties_typeProperties_url": {
+			"value": "https://synapsenycpayrollacct.dfs.core.windows.net/"
+		},
+		"ls_adls_nycpayroll_properties_typeProperties_url": {
+			"value": "https://adlsnycpayroll.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
