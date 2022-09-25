@@ -2,7 +2,9 @@
 	"name": "ls_adls_nycpayroll",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
-		"annotations": [],
+		"annotations": [
+			"AzureBlogStorage"
+		],
 		"type": "AzureBlobFS",
 		"typeProperties": {
 			"url": "https://adlsnycpayroll.dfs.core.windows.net/",
